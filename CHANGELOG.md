@@ -4,6 +4,30 @@ All notable changes to waypower are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/), and this project adheres to
 [Semantic Versioning](https://semver.org/).
 
+## [0.2.0] - 2026-09-23
+
+Hardening release — evals now discriminate on all 13 skills, and CI gates
+both eval structure and cross-harness installation.
+
+### Added
+
+- **CI workflow** (`.github/workflows/ci.yml`): a structural eval gate on PRs
+  touching `skills/**` (`scripts/validate-evals.mjs` — frontmatter validity,
+  evals.json shape, required happy/temptation/trigger-check mix), plus a
+  4-cell **install matrix** (Claude Code, Cursor, Cline, Codex CLI) that
+  installs the checked-out commit via `npx skills add` and verifies all 13
+  skills land where each harness reads them (`scripts/verify-install.mjs`).
+- CI badge in README; issue templates (evals-aware bug report + skill idea)
+  and GitHub Discussions; scripted demo video (75s MP4 + GIF) in README.
+
+### Changed
+
+- `domain-glossary` now discriminates: new eval 5 (trivial-ADR temptation),
+  sharpened eval 2, semantics-first + ADR red-flag lines in SKILL.md.
+  Release gate met: **13 of 13** skills discriminate cleanly (was 12/13).
+- Docs compatibility claims now distinguish the CI-verified harness set from
+  harnesses supported by the skills CLI but not in the matrix.
+
 ## [0.1.0] - 2026-09-23
 
 Initial release.
