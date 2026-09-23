@@ -18,9 +18,20 @@ const wanted = expectedDir.replaceAll('\\', '/');
 
 let report;
 try {
-  report = JSON.parse(readFileSync(reportPath, 'utf8'));
+  // The skills CLI can emit ANSI-styled banner lines around the JSON
+  // payload in CI logs despite --json; strip escapes, then take the
+  // outermost JSON array.
+  const raw = readFileSync(reportPath, 'utf8')
+    // eslint-disable-next-line no-control-regex
+    .replaceAll(/\u001b\[[0-9;]*[A-Za-z]/g, '');
+  const start = raw.indexOf('[');
+  const end = raw.lastIndexOf(']');
+  if (start === -1 || end <= start) throw new Error('no JSON array found in report');
+  report = JSON.parse(raw.slice(start, end + 1));
 } catch (e) {
   console.error(`install report does not parse: ${e.message}`);
+  console.error('--- first 400 chars of report ---');
+  console.error(readFileSync(reportPath, 'utf8').slice(0, 400));
   process.exit(1);
 }
 
