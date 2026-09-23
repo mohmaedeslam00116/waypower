@@ -19,7 +19,7 @@ Every map and ticket is an issue, so it has a **name**: its title. In everything
 
 ## The Map
 
-The map is a single issue on this repo's issue tracker, labelled `wayfinder:map`, the canonical artifact. Its tickets are child issues of the map. (The label keeps the upstream spelling so existing maps and tracker queries stay valid — only the skill's name changed.)
+The map is a single issue on this repo's issue tracker, labelled `waymap:map`, the canonical artifact. Its tickets are child issues of the map.
 
 The map is an **index**, not a store. It lists the decisions made and points at the tickets that hold their detail; a decision lives in exactly one place, its ticket, so the map never restates it, only gists it and links.
 
@@ -62,7 +62,7 @@ Each ticket is a **child issue** of the map; the tracker's issue id is its ident
 <the decision or investigation this ticket resolves>
 ```
 
-Each ticket carries a `wayfinder:<type>` label, one of `research`, `prototype`, `grilling`, `task` (see Ticket Types; label spellings kept from upstream for compatibility).
+Each ticket carries a `waymap:<type>` label, one of `research`, `prototype`, `grilling`, `task` (see Ticket Types).
 
 A session **claims** a ticket by assigning it to the dev driving the map, **first**, before any work, so concurrent sessions skip it. That assignee _is_ the claim: an open, unassigned ticket is unclaimed.
 
@@ -75,7 +75,7 @@ The answer isn't part of the body; it's recorded on resolution (see Work through
 Every ticket is either **HITL** (human in the loop, worked _with_ a human who speaks for themselves) or **AFK**, driven by the agent alone. A HITL ticket only resolves through that live exchange; the agent never stands in for the human's side of it (an interviewing agent that answers its own questions has broken this).
 
 - **Research** (AFK): Reading documentation, third-party APIs, or local knowledge bases to surface a fact a decision waits on. Resolved by a subagent invoking `deep-research`. Use when knowledge outside the current working directory is required.
-- **Prototype** (HITL): Raise the fidelity of the discussion with a cheap, rough, concrete artifact to react to (an outline, a rough take, a stub, or UI/logic code). Links the prototype as an asset. Use when "how should it look" or "how should it behave" is the key question. The upstream `prototype` skill is a compatible companion — invoke it if installed; otherwise build the rough artifact directly, keeping it throwaway.
+- **Prototype** (HITL): Raise the fidelity of the discussion with a cheap, rough, concrete artifact to react to (an outline, a rough take, a stub, or UI/logic code). Links the prototype as an asset. Use when "how should it look" or "how should it behave" is the key question. Build the rough artifact directly, keeping it throwaway.
 - **Grilling** (HITL): Conversation. The default case. Invoke `design-interview`, with `domain-glossary` alongside for the vocabulary.
 - **Task** (HITL or AFK): Manual work that must happen before a _decision_ can be made: nothing to decide, prototype, or research, but the discussion is blocked until it's done. Signing up for a service so its API can be judged, provisioning access, moving data so its shape can be seen. This is the one type that _does_ rather than decides, and it earns its place by unblocking a decision, not by delivering the destination. The agent drives it alone where it can (AFK); otherwise it hands the human a precise checklist (HITL). Resolved when the work is done; the answer records what was done and any resulting facts (credentials location, new URLs, row counts) later tickets depend on.
 
@@ -110,7 +110,7 @@ User invokes with a loose idea.
 
 1. **Name the destination.** Invoke `design-interview` (with `domain-glossary` alongside) to pin down what this map is finding its way to: the spec, decision, or change. The destination fixes the scope, so it's settled first.
 2. **Map the frontier.** Interview again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog** (the way to the destination is already clear, the whole journey small enough for one session), you don't need a map. Stop and ask the user how they'd like to proceed.
-3. **Create the map** (label `wayfinder:map`): Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
+3. **Create the map** (label `waymap:map`): Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as child issues of the map, then wire blocking edges in a **second pass** (issues need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog: the **Not yet specified** section.
 5. **Fire the research subagents.** For each `research` ticket you just created, spin up a subagent invoking `deep-research` to resolve it in parallel, capturing its findings where the repo keeps research notes, with a context pointer from the ticket.
 6. Stop: charting is one session's work; it hand-resolves nothing.

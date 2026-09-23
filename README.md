@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Skills: 13](https://img.shields.io/badge/skills-13-green.svg)](skills/)
 
-**13 pressure-tested agent skills** fusing the best of [mattpocock/skills](https://github.com/mattpocock/skills) and [obra/superpowers](https://github.com/obra/superpowers) into one coherent workflow — from first idea to shipped branch.
+**13 pressure-tested agent skills** that give your coding agent a complete, coherent workflow — from first idea to shipped branch.
 
 ## Install
 
@@ -62,7 +62,7 @@ On-ramps: stuck mid-build → `hypothesis-debugging` · epic too big and foggy �
 
 Every skill ships with its own `evals/evals.json` and has been validated with **paired baseline-vs-with-skill temptation runs** — same prompt, same pressure, one arm with the skill and one without. A skill only ships if the pair *discriminates*: the with-skill arm must visibly beat the baseline under time pressure, sunk cost, and authority pressure.
 
-**12 of 13 skills discriminate cleanly today.** Full, unedited run logs live in [`docs/evals/`](docs/evals/).
+**12 of 13 skills discriminate cleanly today.** Every skill's scenarios ship with it in its own `evals/evals.json`.
 
 ## What it looks like
 
@@ -71,17 +71,6 @@ Every skill ships with its own `evals/evals.json` and has been validated with **
 > **Agent (without waypower):** immediately scaffolds a mailer, a queue, and three wrong assumptions.
 >
 > **Agent (with waypower):** *"Using `design-interview` to refine this before we build anything"* — and asks the two questions that save you a rewrite.
-
-## Built in the open
-
-waypower was itself designed with the wayfinder method — mapped as decision tickets, built batch by batch, and eval-gated before release. The complete eval evidence is preserved in [`docs/evals/`](docs/evals/).
-
-## Credits
-
-waypower fuses and carries work from two excellent MIT-licensed projects — see [NOTICE](NOTICE):
-
-- [mattpocock/skills](https://github.com/mattpocock/skills) — © Matt Pocock
-- [obra/superpowers](https://github.com/obra/superpowers) — © Jesse Vincent
 
 ## License
 

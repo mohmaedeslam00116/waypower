@@ -5,7 +5,7 @@ You don't remember every skill, so consult this map. A **flow** is a path throug
 ## The main flow: idea → ship
 
 1. **`design-interview`** sharpens the idea by interview. It classifies the work (question / design / build) and holds the HARD GATE between design and build: no building until the design is settled with the user.
-2. **Branch: can every question be settled in conversation?** If a question needs a runnable answer (state, business logic, a UI you have to see), detour through a throwaway prototype (the upstream `prototype` skill is a *compatible companion* — install it from mattpocock/skills if you want it), bridged by **`finish-handoff`** in both directions: hand off out to the prototype session, hand what you learned back, and reference it from the original thread.
+2. **Branch: can every question be settled in conversation?** If a question needs a runnable answer (state, business logic, a UI you have to see), detour through a throwaway prototype, bridged by **`finish-handoff`** in both directions: hand off out to the prototype session, hand what you learned back, and reference it from the original thread.
 3. **Branch: is this a multi-session build?**
    - **Yes** → **`tracer-plan`**: turn the thread into a spec, split it into tracer-bullet tickets with blocking edges, then execute ticket by ticket, blockers first. If the effort is bigger than a map-less plan can hold — the way to the destination isn't visible yet — escalate to **`waymap`** instead.
    - **No** → build right here, in the same context window, under **`tracer-plan`**'s single-slice path.
@@ -22,16 +22,12 @@ A starting situation that generates work, then merges onto the main flow.
 
 - **Something's broken** → **`hypothesis-debugging`**. Ranked hypotheses, one experiment at a time, no fixes before the cause is found. Once you can write a failing test that reproduces the bug, you are on the main flow inside `seam-driven-tdd`.
 - **A loose idea too big for one session, wrapped in fog** → **`waymap`**: chart a shared map of decision tickets on the issue tracker and resolve them one at a time until the way is clear. The map's resolutions feed the main flow at step 1.
-- **Bugs and requests arriving raw from elsewhere** → triage them first (the upstream `triage` skill is a compatible companion), producing agent-ready issues that step 3 picks up.
+- **Bugs and requests arriving raw from elsewhere** → triage them first, producing agent-ready issues that step 3 picks up.
 
 ## Vocabulary layers (run underneath everything)
 
 - **`domain-glossary`** owns the project's `CONTEXT.md` and ADRs. Test names, ticket titles, specs, and reviews are written in its language.
 - **`seam-design`** is the shared vocabulary for module, interface, depth, seam, adapter, leverage, locality. Consult it whenever an interface shape is contested — a reference to read, not a session to run.
-
-## Compatible companions (not part of waypower v1)
-
-Useful upstream skills that stay in their home repos; install them alongside if you want them: `prototype`, `triage`, `teach`, `wizard`, `wait-what`, `resolving-merge-conflicts`, `to-questionnaire`, `grill-me` (stateless interviewing with no repo). They compose with waypower but are never required by it.
 
 ## Tools (manual only)
 

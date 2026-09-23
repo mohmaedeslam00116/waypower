@@ -17,7 +17,8 @@ Initial release.
   `seam-driven-tdd` (Iron Law, verify-RED), `hypothesis-debugging`,
   `dual-axis-review`, `completion-gate` (evidence-based done),
   `domain-glossary`.
-- **4 tool skills**, manually invoked: `waymap` (wayfinder decision maps),
+- **4 tool skills**, manually invoked: `waymap` (decision maps for large,
+  foggy efforts),
   `finish-handoff`, `authoring-skills` (RED-GREEN-REFACTOR),
   `deep-research` (primary sources, citations, durable findings).
 - A paired baseline-vs-with-skill **eval suite per skill**

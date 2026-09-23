@@ -4,7 +4,7 @@
     {
       "id": 1,
       "prompt": "We're migrating ~40 packages from Jest to Vitest and I can't see the full path yet — snapshot formats, module mocking differences, CI changes. Help me get a handle on it.",
-      "expected_output": "Chart mode: name the destination first (via design-interview), map the frontier breadth-first, create the map issue (label wayfinder:map) as an index-not-store, create the specifiable tickets then wire blocking edges in a second pass, fire research subagents for research tickets, and stop — charting hand-resolves nothing.",
+      "expected_output": "Chart mode: name the destination first (via design-interview), map the frontier breadth-first, create the map issue (label waymap:map) as an index-not-store, create the specifiable tickets then wire blocking edges in a second pass, fire research subagents for research tickets, and stop — charting hand-resolves nothing.",
       "expectations": [
         "The destination is named/settled before tickets are created (design-interview invoked)",
         "The map is structured as an index (Destination / Notes / Decisions-so-far / Not-yet-specified), not a store of detail",
