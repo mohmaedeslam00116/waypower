@@ -42,5 +42,10 @@ jobs:
           node-version: 20
       - name: Install pack for ${{ matrix.agent }}
         run: npx -y skills add "$GITHUB_WORKSPACE" -a ${{ matrix.agent }} -s '*' -y --copy --json > install.json
+      - name: Dump install report
+        if: always()
+        run: |
+          wc -c install.json
+          cat install.json
       - name: Verify skills landed in ${{ matrix.dir }}
         run: node scripts/verify-install.mjs install.json "${{ matrix.dir }}" 13
