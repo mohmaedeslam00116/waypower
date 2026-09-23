@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://mohmaedeslam00116.github.io/waypower-docs/
+    about: The full waypower docs — skills, evals discipline, and the waymap process
+  - name: Questions & discussion
+    url: https://github.com/mohmaedeslam00116/waypower/discussions
+    about: Ask questions, share session transcripts, show what you built — Discussions, not issues

@@ -1,0 +1,58 @@
+name: Skill idea
+description: Propose a new skill for the pack — the bar is paired evals that discriminate
+title: "[skill] "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        New skills ship only when a paired eval run **discriminates** — the
+        with-skill arm visibly beats the baseline under pressure. See
+        CONTRIBUTING.md. You don't need the full evals to open this issue;
+        describing the temptation scenario is enough to start.
+  - type: input
+    id: name
+    attributes:
+      label: Proposed skill name
+      description: Short, imperative-flavored, kebab-case — e.g. systematic-debugging
+      placeholder: skill-name
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: "Use when…"
+      description: One sentence starting with "Use when…" — when should an agent fire this skill? This becomes the frontmatter description
+      placeholder: Use when …
+    validations:
+      required: true
+  - type: textarea
+    id: temptation
+    attributes:
+      label: The temptation scenario
+      description: The situation where an agent takes the shortcut this skill prevents. What does the baseline do wrong? Leave the shortcut as the agent's own choice — never an explicit user prohibition
+      placeholder: |
+        Setup: …
+        Baseline (without skill) does: …
+        With skill should do: …
+    validations:
+      required: true
+  - type: textarea
+    id: evals-sketch
+    attributes:
+      label: Eval sketch (optional)
+      description: The 4 evals you'd write — happy path, temptation, positive trigger, negative trigger
+      placeholder: |
+        1. Happy path: …
+        2. Temptation: …
+        3. Positive trigger: …
+        4. Negative trigger: …
+    validations:
+      required: false
+  - type: textarea
+    id: prior
+    attributes:
+      label: Evidence from real sessions (optional)
+      description: Links or transcripts showing agents failing this way in the wild
+    validations:
+      required: false

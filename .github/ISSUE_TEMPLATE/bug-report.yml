@@ -1,0 +1,67 @@
+name: Bug report
+description: Something in waypower misbehaves — a skill misfires, an eval fails, a command breaks
+title: "[bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. waypower is a pack of agent skills — the most
+        useful reports show the agent's actual behavior, not just the symptom.
+  - type: input
+    id: skill
+    attributes:
+      label: Skill affected
+      description: Which skill was (or should have been) active? e.g. tracer-plan, tdd, completion-gate
+      placeholder: skill name, or "install / cli" if not skill-related
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: What happened vs. what should have happened
+      description: Expected behavior and actual behavior, in your agent's session
+      placeholder: |
+        Expected: …
+        Actual: …
+    validations:
+      required: true
+  - type: textarea
+    id: transcript
+    attributes:
+      label: Transcript excerpt (if skill-related)
+      description: Paste the relevant lines of the agent session — the prompt, what the agent did, where the skill should have fired
+      render: text
+    validations:
+      required: false
+  - type: dropdown
+    id: harness
+    attributes:
+      label: Agent harness
+      description: Which coding agent was running waypower?
+      options:
+        - Claude Code
+        - Cursor
+        - Copilot / VS Code
+        - Windsurf
+        - Other (mention in behavior)
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: waypower version
+      description: From the install, or the commit SHA if you installed from source
+      placeholder: e.g. 0.1.0
+    validations:
+      required: false
+  - type: checkboxes
+    id: evals
+    attributes:
+      label: Evals check
+      description: If the bug is in a skill's trigger or behavior — did the existing evals catch it?
+      options:
+        - label: The failing case is NOT covered by that skill's evals (I can propose one)
+          required: false
+        - label: The failing case IS in the evals but the skill passed anyway (discrimination gap)
+          required: false
