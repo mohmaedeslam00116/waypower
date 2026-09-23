@@ -2,6 +2,6 @@
   "name": "waypower",
   "version": "0.1.0",
   "description": "13 pressure-tested agent skills that teach your coding agent how to work: 9 process skills auto-invoked by an orchestrator plus 4 manual tool skills, forming a complete idea-to-ship pipeline.",
-  "keywords": ["skills", "tdd", "debugging", "planning", "wayfinder", "code-review", "research"],
+  "keywords": ["skills", "tdd", "debugging", "planning", "code-review", "research"],
   "skills": "./skills"
 }
