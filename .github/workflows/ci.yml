@@ -1,0 +1,46 @@
+name: CI
+
+on:
+  pull_request:
+    paths: ['skills/**', 'scripts/**', '.github/workflows/**']
+  push:
+    branches: [master]
+    paths: ['skills/**', 'scripts/**', '.github/workflows/**']
+
+jobs:
+  # (a) Eval gate — structural validation of every skill's eval suite.
+  # Behavioral paired runs (baseline vs with-skill sub-agents) require an
+  # agent harness and stay manual, per authoring-skills; this job gates
+  # everything CI can guarantee: frontmatter validity, evals.json shape,
+  # and the required eval mix (happy, temptation, +/- trigger checks).
+  eval-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: node scripts/validate-evals.mjs
+
+  # (b) Install matrix — smoke-test that `npx skills add` lands the pack
+  # where each harness reads its skills. Installs from the checked-out
+  # commit, so PRs test their own content.
+  install-matrix:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { agent: claude-code, dir: .claude/skills }
+          - { agent: cursor, dir: .agents/skills }
+          - { agent: cline, dir: .agents/skills }
+          - { agent: codex, dir: .agents/skills }
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install pack for ${{ matrix.agent }}
+        run: npx -y skills add "$GITHUB_WORKSPACE" -a ${{ matrix.agent }} -s '*' -y --copy --json > install.json
+      - name: Verify skills landed in ${{ matrix.dir }}
+        run: node scripts/verify-install.mjs install.json "${{ matrix.dir }}" 13

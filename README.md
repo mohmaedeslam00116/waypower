@@ -3,6 +3,7 @@
 > Your agent already knows how to code. **waypower teaches it how to work.**
 
 [![skills.sh](https://skills.sh/b/mohmaedeslam00116/waypower)](https://skills.sh/mohmaedeslam00116/waypower)
+[![CI](https://github.com/mohmaedeslam00116/waypower/actions/workflows/ci.yml/badge.svg)](https://github.com/mohmaedeslam00116/waypower/actions/workflows/ci.yml)
 [![Docs](https://img.shields.io/badge/docs-waypower--docs-0E7490)](https://mohmaedeslam00116.github.io/waypower-docs/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Skills: 13](https://img.shields.io/badge/skills-13-green.svg)](skills/)
