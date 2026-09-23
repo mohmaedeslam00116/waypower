@@ -30,6 +30,8 @@ try {
   report = JSON.parse(raw.slice(start, end + 1));
 } catch (e) {
   console.error(`install report does not parse: ${e.message}`);
+  console.error('--- first 400 chars of report ---');
+  console.error(readFileSync(reportPath, 'utf8').slice(0, 400));
   process.exit(1);
 }
 
