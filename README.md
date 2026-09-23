@@ -11,6 +11,12 @@
 
 📖 **[Read the full docs](https://mohmaedeslam00116.github.io/waypower-docs/)** — the pipeline, a per-skill reference, and the story of how these skills built their own site.
 
+## See it in action
+
+![waypower demo — verified RED to GREEN to PASS](assets/demo.gif)
+
+A full pipeline run, scripted and rendered programmatically: brief → `design-interview` → `tracer-plan` → `seam-driven-tdd` (verified RED → GREEN) → `completion-gate` → `finish-handoff`. **[Watch the full 75-second run (MP4, 1080p)](assets/demo.mp4)** — the Remotion source lives in [waypower-docs/demo](https://github.com/mohmaedeslam00116/waypower-docs/tree/main/demo).
+
 ## Install
 
 ```bash
