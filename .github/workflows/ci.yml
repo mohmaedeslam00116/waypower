@@ -45,10 +45,5 @@ jobs:
         # cached release on the runner image (observed: pre-1.7 ignored
         # --json and installed claude-code into .agents/skills).
         run: npx -y skills@1.7.0 add "$GITHUB_WORKSPACE" -a ${{ matrix.agent }} -s '*' -y --copy --json > install.json
-      - name: Dump install report
-        if: always()
-        run: |
-          wc -c install.json
-          cat install.json
       - name: Verify skills landed in ${{ matrix.dir }}
         run: node scripts/verify-install.mjs install.json "${{ matrix.dir }}" 13
