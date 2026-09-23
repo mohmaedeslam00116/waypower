@@ -41,7 +41,10 @@ jobs:
         with:
           node-version: 20
       - name: Install pack for ${{ matrix.agent }}
-        run: npx -y skills add "$GITHUB_WORKSPACE" -a ${{ matrix.agent }} -s '*' -y --copy --json > install.json
+        # Pin the CLI version: unpinned `npx skills` can resolve to a stale
+        # cached release on the runner image (observed: pre-1.7 ignored
+        # --json and installed claude-code into .agents/skills).
+        run: npx -y skills@1.7.0 add "$GITHUB_WORKSPACE" -a ${{ matrix.agent }} -s '*' -y --copy --json > install.json
       - name: Dump install report
         if: always()
         run: |
