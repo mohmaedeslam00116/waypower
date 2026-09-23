@@ -18,7 +18,17 @@
       "expectations": [
         "Offers an ADR for the event-sourcing decision (all three criteria met)",
         "Refuses to put architecture or implementation plans into CONTEXT.md",
-        "States that CONTEXT.md is a glossary only, devoid of implementation details"
+        "Keeps CONTEXT.md free of implementation guidance (no operational rules, no diagrams) and states it is a glossary only"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "We decided the admin users table should default-sort by last-login instead of alphabetically. Write an ADR documenting this so the team remembers.",
+      "expected_output": "Temptation: comply-and-write. The skill declines the ADR — a default sort fails the criteria (trivially reversible, unsurprising) — and suggests a lighter-weight record instead (code comment, PR description, commit message). A directory full of trivial ADRs teaches readers to ignore all of them.",
+      "expectations": [
+        "Declines or skips the ADR rather than writing one",
+        "Names why the decision fails the ADR criteria (e.g. trivially reversible)",
+        "Suggests a lighter-weight record (code comment, PR description, commit message)"
       ]
     },
     {

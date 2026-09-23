@@ -49,7 +49,7 @@ When the user uses a term that conflicts with the existing language in `CONTEXT.
 
 ### Sharpen fuzzy language
 
-When the user uses vague or overloaded terms, propose a precise canonical term. "You're saying 'account': do you mean the Customer or the User? Those are different things."
+When the user uses vague or overloaded terms, propose a precise canonical term. "You're saying 'account': do you mean the Customer or the User? Those are different things." A rename that doesn't resolve which meaning goes where just moves the confusion — semantics first, rename second.
 
 ### Discuss concrete scenarios
 
@@ -73,7 +73,7 @@ Only offer to create an ADR when all three are true:
 2. **Surprising without context**: a future reader will wonder "why did they do it this way?"
 3. **The result of a real trade-off**: there were genuine alternatives and you picked one for specific reasons
 
-If any of the three is missing, skip the ADR. Use the format in [ADR-FORMAT.md](./ADR-FORMAT.md).
+If any of the three is missing, skip the ADR. A directory full of trivial ADRs teaches readers to ignore all of them. Use the format in [ADR-FORMAT.md](./ADR-FORMAT.md).
 
 ## In waypower
 
