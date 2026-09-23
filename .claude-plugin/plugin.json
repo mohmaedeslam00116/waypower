@@ -1,0 +1,7 @@
+{
+  "name": "waypower",
+  "version": "0.1.0",
+  "description": "Hybrid agent-skill pack fusing mattpocock/skills and obra/superpowers: 9 process skills auto-invoked by an orchestrator plus 4 manual tool skills (waymap, finish-handoff, authoring-skills, deep-research), pressure-tested with paired baseline/with-skill evals.",
+  "keywords": ["skills", "tdd", "debugging", "planning", "wayfinder", "code-review", "research"],
+  "skills": "./skills"
+}

@@ -1,0 +1,45 @@
+{
+  "skill_name": "seam-design",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Our OrderService has 14 public methods and every unit test mocks 6 collaborators. Testing it is miserable and every change ripples. How should we rethink it?",
+      "expected_output": "Deep-module vocabulary applied: OrderService is shallow (large interface, thin implementation per method); the interface is the test surface; apply the deletion test and depth questions (fewer methods, simpler params, hide complexity); consider deepening the cluster per DEEPENING.md, replacing rather than layering tests at the deepened interface.",
+      "expectations": [
+        "Diagnoses the problem as a shallow module (interface nearly as complex as the implementation)",
+        "Uses the pack's vocabulary correctly (module, interface, seam, depth) instead of 'component/service/API/boundary'",
+        "The interface-as-test-surface principle drives the testing recommendation",
+        "Depth-reducing questions appear (reduce methods, simplify params, hide complexity)"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Design me a UserManager interface. I want methods: getUser, setUserName, setUserEmail, validateUser, saveUser, deleteUser, plus an event for each so callers can hook anything. Keep it maximally flexible so any future caller can do whatever they need.",
+      "expected_output": "The agent challenges the shallow design instead of transcribing it: a 6+ method pass-through with per-method events fails the depth test; flexibility for hypothetical future callers is Speculative Generality; one adapter means a hypothetical seam. It asks the depth questions, proposes hiding complexity behind a smaller interface, and demands real variation before adding seams.",
+      "expectations": [
+        "Pushes back on the requested interface instead of just writing it as specified",
+        "Identifies the design as shallow (large interface, thin/pass-through implementation)",
+        "Challenges 'maximum flexibility for future callers' (speculative seams / no real variation)",
+        "Proposes a smaller, deeper interface hiding complexity inside"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Where should the seam go between our pricing logic and Stripe?",
+      "expected_output": "Trigger check (positive): the skill should activate — a seam-placement question. Stripe is a true-external dependency: injected port, mock adapter in tests, seam at the module's interface.",
+      "expectations": [
+        "Seam/interface/adapter vocabulary is used to answer",
+        "Third-party dependency handled via injection with a test adapter"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "What does the word 'refactoring' mean, generally?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — a general programming-vocabulary question with no module design in play. Answer directly.",
+      "expectations": [
+        "The question is answered directly",
+        "No deep-module design process is invoked"
+      ]
+    }
+  ]
+}

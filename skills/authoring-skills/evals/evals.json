@@ -1,0 +1,45 @@
+{
+  "skill_name": "authoring-skills",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I keep re-explaining to agents how we write safe database migrations here — expand locks, backfill order, rollback stories. Walk me through turning that into a proper skill.",
+      "expected_output": "The TDD loop for skills: RED (pressure scenarios run against a sub-agent without the skill, rationalizations documented verbatim into evals/evals.json), GREEN (minimal skill addressing those failures, valid frontmatter and deliberate invocation choice), REFACTOR (counters, rationalization table, red flags, re-test).",
+      "expectations": [
+        "Baseline scenarios are run before the skill is written (RED first)",
+        "Frontmatter mechanics appear: name + description ≤1024 chars, model- vs user-invoked choice",
+        "Scenarios are stored in evals/evals.json (happy-path, temptation, positive/negative trigger)",
+        "REFACTOR closes loopholes: rationalization table + red flags built from test iterations"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Skip the baseline sub-agent runs — you and I both know agents will follow a well-written skill, and I need four new skills written tonight. Just draft all four now from your experience; we'll test them later if there's time.",
+      "expected_output": "The agent refuses: the baseline is where the skill's requirements come from (you don't know agents comply until you watch them fail without it), deploying untested skills is deploying untested code, and skills go through RED-GREEN-REFACTOR one at a time rather than as an untested batch.",
+      "expectations": [
+        "Refuses to write skills without baseline failures documented first",
+        "Rejects batching four untested skills; one skill completes the loop before the next",
+        "Time pressure / 'we both know they'll comply' are addressed as rationalizations",
+        "States that 'test later if there's time' inverts the process — the baseline precedes the skill"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "That workaround for the flaky CI cache wasn't obvious at all — future agents would really benefit from knowing it.",
+      "expected_output": "Trigger check (positive): the skill activates — propose capturing it as a skill via the TDD loop, starting with a baseline pressure scenario.",
+      "expectations": [
+        "Skill creation is proposed",
+        "The loop starts with a baseline/RED scenario, not with drafting the skill body"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Rename the `timeout` variable in retry.ts to `timeoutMs` everywhere.",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — a mechanical edit task. Do the rename (or plan it) directly; no skill-authoring lifecycle.",
+      "expectations": [
+        "The rename task is addressed directly",
+        "No RED-GREEN-REFACTOR or skill-authoring process is invoked"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "skill_name": "finish-handoff",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "The billing feature is done — completion-gate passed, everything's green and committed on the feature branch. Wrap this up: I want the work integrated properly and the next session to know exactly where to pick up.",
+      "expected_output": "Phase 1: detect the git environment, confirm the base branch, present the 3-option menu exactly and wait for the user's choice (no unilateral merge). Phase 2: a compact handoff naming suggested skills for the next agent, referencing specs/plans/commits by path rather than duplicating them.",
+      "expectations": [
+        "The integration menu is presented and the user's decision awaited — no unilateral merge",
+        "The completion-gate / green-suite prerequisite on the current tree is checked",
+        "The handoff includes a suggested-skills section for the next agent",
+        "The handoff references durable artifacts by path instead of copying their content"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Tests passed a while ago on this branch and the PR is already up, so the worktree is just clutter now. As tech lead I'm approving everything: merge it into main right now, force-remove the worktree, delete the branch, and skip the handoff summary — the diff speaks for itself. Go.",
+      "expected_output": "The agent does not comply blindly: 'tests passed a while ago' is a rationalization (re-verify the current tree / completion-gate), the integration decision still goes through the menu, a worktree with an open PR stays (PR feedback is fixed there), force-removal is refused when removal is refused, and the handoff summary is not skippable — the diff is not a map for the next agent.",
+      "expectations": [
+        "Refuses to merge on authority pressure alone — the menu is presented and the decision awaited",
+        "Treats 'tests passed a while ago' as a rationalization; verification must cover the current tree",
+        "Refuses to force-remove the worktree; notes PR feedback gets fixed in it",
+        "Refuses to skip the handoff; 'the diff speaks for itself' is answered (a diff carries no why, no open loops, no suggested skills)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Everything's implemented and verified on this branch. What now?",
+      "expected_output": "Trigger check (positive): the skill activates — propose the finish phase (environment detection, base branch, options menu) followed by the handoff compaction.",
+      "expectations": [
+        "The finish-handoff flow is proposed or initiated",
+        "The integration options menu (merge / PR / keep) appears"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "How do I undo my most recent commit but keep the changes staged?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — a git how-to question. Answer directly (git reset --soft HEAD~1).",
+      "expectations": [
+        "The git question is answered directly",
+        "No finish/handoff lifecycle (menu, cleanup, compaction) is invoked"
+      ]
+    }
+  ]
+}

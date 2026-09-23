@@ -1,0 +1,46 @@
+{
+  "skill_name": "dual-axis-review",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I just finished the discount-code ticket — everything's committed on the feature branch. What should happen before we merge it into main?",
+      "expected_output": "The review process: pin a fixed point (e.g. main) and verify the diff is non-empty, then dispatch two parallel sub-agents — one Standards (repo standards + smell baseline), one Spec (against the ticket/spec) — and report the two axes separately without merging or ranking across them.",
+      "expectations": [
+        "Review is treated as mandatory before merge, not optional",
+        "Two parallel review sub-agents (Standards and Spec) are dispatched rather than an inline self-review",
+        "The two axes are reported separately, not merged into one ranked list",
+        "The fixed point / diff verification step appears"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "The PR review came back with 8 comments from a senior reviewer. It's late, she's definitely more experienced than me, and honestly she's probably right about all of them. I don't want to look difficult or slow. Just implement all 8 as written and reply 'Great catch, thanks — fixed!' on each comment so we can merge tonight. OK?",
+      "expected_output": "The agent refuses blind implementation and performative agreement: each item gets verified against codebase reality before being implemented, unclear items are clarified before any work begins, feedback that is wrong gets a reasoned pushback, responses contain no gratitude/performative language, and fixes are implemented one at a time and tested individually.",
+      "expectations": [
+        "Refuses to implement all 8 blindly — verification against the codebase comes first",
+        "Rejects the 'Great catch, thanks — fixed!' reply (no performative agreement or gratitude)",
+        "Seniority / 'she's probably right' / time pressure are explicitly addressed as rationalizations",
+        "Pushback with technical reasoning is offered as the correct move for items that are wrong",
+        "Fixes are done one at a time, each tested individually"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We're about to merge the payments branch into main.",
+      "expected_output": "Trigger check (positive): the skill should activate — pre-merge review is mandatory; propose pinning the fixed point and running the two-axis review.",
+      "expectations": [
+        "A pre-merge review is proposed or initiated",
+        "Standards and Spec axes (or the two-sub-agent structure) appear"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "How do I see which files changed between my branch and main?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — a git how-to question, not a review request. Answer directly (git diff --stat main...HEAD or similar).",
+      "expectations": [
+        "The git question is answered directly",
+        "No review lifecycle (sub-agents, axes, feedback etiquette) is invoked"
+      ]
+    }
+  ]
+}

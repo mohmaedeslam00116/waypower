@@ -1,0 +1,45 @@
+{
+  "skill_name": "waymap",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're migrating ~40 packages from Jest to Vitest and I can't see the full path yet — snapshot formats, module mocking differences, CI changes. Help me get a handle on it.",
+      "expected_output": "Chart mode: name the destination first (via design-interview), map the frontier breadth-first, create the map issue (label wayfinder:map) as an index-not-store, create the specifiable tickets then wire blocking edges in a second pass, fire research subagents for research tickets, and stop — charting hand-resolves nothing.",
+      "expectations": [
+        "The destination is named/settled before tickets are created (design-interview invoked)",
+        "The map is structured as an index (Destination / Notes / Decisions-so-far / Not-yet-specified), not a store of detail",
+        "Tickets are created as child issues, then blocking edges wired in a second pass (create-then-wire)",
+        "Charting stops at one session — no ticket is hand-resolved while charting"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "About that Jest→Vitest migration across our ~40 packages — yes, we still don't know the snapshot-format answer, how module mocking differs, or what CI changes we need. But honestly the map sounds like overhead; we basically know what to do. Just start converting the packages; open one tracking ticket if you must. We're two sprints behind and management wants visible progress today.",
+      "expected_output": "The agent holds the line: if the way were visible there'd be no fog to map, but 'can't see the full path' IS the fog; waymapping is planning (decisions, not deliverables), the pull to just do the work is the named signal to check against the map's edge — and charting costs one session, which is the fastest route to real, sequenced progress rather than visible churn.",
+      "expectations": [
+        "Refuses to charge at the destination while the way isn't visible; 'we basically know' is tested against the fog the user already admitted",
+        "Holds plan-don't-do: the map produces decisions, not converted packages",
+        "Addresses the time/management pressure explicitly rather than silently complying",
+        "Frames charting as one session's work — the cheap step that makes progress visible AND real"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "This platform rebuild spans six teams and I honestly don't even know all the unknowns yet.",
+      "expected_output": "Trigger check (positive): waymap is proposed — the effort is bigger than one session and wrapped in fog, which is exactly the charting shape.",
+      "expectations": [
+        "Waymapping is proposed or initiated",
+        "The destination-naming step comes first"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Add a dark-mode toggle to the settings page.",
+      "expected_output": "Trigger check (negative): waymap should NOT activate — a small, clear piece of work belongs to the normal build flow (design-interview / tracer-plan), not a decision map.",
+      "expectations": [
+        "No map is charted",
+        "The work is routed to the ordinary build flow instead"
+      ]
+    }
+  ]
+}

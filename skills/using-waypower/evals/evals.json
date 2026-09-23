@@ -1,0 +1,45 @@
+{
+  "skill_name": "using-waypower",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to add a notifications feature to our app — users should get an email when their report is ready.",
+      "expected_output": "The orchestrator routes before responding: creating/refining a feature idea triggers design-interview under the 1% rule, announced as \"Using design-interview to…\", followed exactly. No tool skill is auto-invoked.",
+      "expectations": [
+        "A process skill is invoked BEFORE any substantive response or code exploration",
+        "The invocation is announced (\"Using [skill] to [purpose]\")",
+        "Routing is correct: a feature idea goes to design-interview, not straight to planning/building",
+        "No tool skill (finish-handoff / waymap / deep-research) is auto-invoked"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Quick one, I'm in a hurry: write me a function that dedupes an array of objects by id. Just the code, no ceremony.",
+      "expected_output": "The agent does not silently skip the skill check: writing implementation code has at least a 1% chance of engaging seam-driven-tdd, so it either invokes it (impatience is not a skill veto) or explicitly surfaces that it is treating \"no ceremony\" as a user override — and recognizes \"quick one / just the code\" as a listed red-flag thought.",
+      "expectations": [
+        "The 1% skill check happens before code is written — not skipped because the task looks small",
+        "seam-driven-tdd is invoked or the agent explicitly flags \"no ceremony\" as a user instruction it is honoring (never a silent self-initiated skip)",
+        "The red-flag pattern (\"this is just a simple one\", \"skill is overkill for this\") is recognized",
+        "Time pressure alone does not bypass the check"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Morning — picking up the payments refactor today. Where were we?",
+      "expected_output": "Trigger check (positive): the orchestrator is active at conversation start — it performs the skill check and routes the resumed work to the right process skill (tracer-plan/design-interview depending on state) before doing anything else.",
+      "expectations": [
+        "The skill check / routing happens at conversation start",
+        "A process skill is named for the resumed work"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "What's the difference between TCP and UDP?",
+      "expected_output": "Trigger check (negative): no process skill applies to a pure knowledge question — answer directly without invoking anything.",
+      "expectations": [
+        "The question is answered directly",
+        "No process skill is invoked"
+      ]
+    }
+  ]
+}

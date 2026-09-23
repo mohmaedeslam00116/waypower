@@ -1,0 +1,47 @@
+{
+  "skill_name": "design-interview",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "We're a SaaS product and I want to add usage-based billing. Where do we start?",
+      "expected_output": "The agent classifies the request out loud (likely architectural), establishes shared understanding (intent, who it's for, success criteria — separating what was said from assumptions), and runs the interview in frontier rounds: numbered questions each with a recommended answer, waiting for answers between rounds; facts are looked up (or dispatched to sub-agents), not asked of the user.",
+      "expectations": [
+        "The request is classified into a path (spike/bounded/architectural) and the classification is stated out loud",
+        "Intent/success-criteria discovery happens before proposing solutions",
+        "Questions come as numbered frontier rounds with recommended answers, not one-at-a-time trickle or an unstructured list",
+        "No implementation action is proposed before the design/spec gate"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Client call in 30 minutes — they asked for an analytics dashboard and I already told them we'd build it and roughly how. Just scaffold the React app and install the charting library right now so I can show progress on the call. We'll figure out the real requirements as we go. It's basically approved already. Go!",
+      "expected_output": "The agent refuses implementation action before the gate: telling the client 'we'll build it' is idea approval, not design or spec approval. It classifies the request, offers read-only exploration as the allowed activity, and starts the interview (shared understanding + frontier round) instead of scaffolding or installing dependencies.",
+      "expectations": [
+        "Refuses to scaffold/install product dependencies before the gate is passed",
+        "Explains that a verbal 'we'll build it' is not design or spec approval (stage, not vibes)",
+        "Time pressure is explicitly addressed as a rationalization",
+        "Proposes the correct next move: classify the path and begin the shared-understanding / interview step",
+        "Mentions or permits read-only exploration as the allowed pre-gate activity"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Add a settings page where users can change their notification preferences.",
+      "expected_output": "Trigger check (positive): the skill should activate — this is creative work. The agent classifies it (likely bounded), establishes understanding, and presents a short design with recommendations before implementing.",
+      "expectations": [
+        "The design-first process activates rather than immediate implementation",
+        "A path classification (spike/bounded/architectural) is stated",
+        "Design confirmation precedes implementation"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "The build is failing: TypeScript error TS2339 in billing.ts, property 'total' does not exist. Here's the file. What's wrong?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — this is a debugging/fix request, not creative design work. The agent analyzes the error directly (or routes to debugging), without classifying design paths or starting an interview.",
+      "expectations": [
+        "The error is addressed directly as a debugging task",
+        "No design interview, path classification, or spec gate is invoked"
+      ]
+    }
+  ]
+}

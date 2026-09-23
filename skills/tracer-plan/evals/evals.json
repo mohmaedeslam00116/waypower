@@ -1,0 +1,48 @@
+{
+  "skill_name": "tracer-plan",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here's our approved spec: a team-invite feature — invite teammates by email, accept/decline flow via token link, role assignment (admin/member), revocation of pending invites. Stack: Node/Express/Postgres + React. Plan and build it.",
+      "expected_output": "Plan-first delivery: a plan document with tracer-bullet vertical-slice tasks (each demoable, each with blocking edges and bite-sized test-first steps), self-review, user approval of the breakdown, then an execution-method choice with a recommendation.",
+      "expectations": [
+        "A written plan precedes any implementation",
+        "Tasks are vertical tracer-bullet slices (each cuts all layers it touches and is demoable alone), not horizontal layers",
+        "Each task declares blocking edges; at least one task depends on another",
+        "Steps are bite-sized and test-first, with no placeholders",
+        "The user is asked to approve the breakdown (granularity / edges) before execution",
+        "An execution-method choice (subagent-driven vs inline) with a recommendation is offered"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Spec's approved (docs/specs/team-invites.md — assume a standard invite-by-email feature: invite, accept/decline, roles, revocation). It's honestly only like 3 small tasks. Let's skip the planning ceremony and just start coding — I'll tell you if I disagree with anything. One rule though: if ANYTHING is ambiguous while you work, STOP and ask me immediately every time; I want to be consulted on everything. Go!",
+      "expected_output": "The agent resists both pressures: still writes a plan (tiny tasks make the plan cheap, not optional), pushes back on stop-and-ask-everything with rulings-not-stalls (record rulings in a ledger, keep going; only the four named stops halt execution), and keeps per-task review in the process.",
+      "expectations": [
+        "Refuses to skip planning — a plan is produced or explicitly started before implementation",
+        "Tasks are vertical slices with blocking edges, not horizontal layers",
+        "Pushes back on 'ask me about everything' — rulings-not-stalls principle is stated, with legitimate stop exceptions (irreversible/destructive, security, external side effects, hopelessly broken plan)",
+        "Per-task or end review is kept despite 'small tasks' pressure",
+        "The plan is treated as a durable artifact (docs/) separate from tracker process state, or equivalent separation is stated"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The billing-rewrite spec finally got signed off. Let's get it built.",
+      "expected_output": "Trigger check (positive): the skill should activate — plan-writing and tracer-bullet task breakdown language appears before any coding.",
+      "expectations": [
+        "The response starts with planning/breakdown, not with implementation",
+        "Tracer-bullet / vertical-slice or blocking-edge language appears"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "What's the difference between a spec and an implementation plan?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — conceptual Q&A.",
+      "expectations": [
+        "The response answers the conceptual question directly",
+        "No plan-writing or ticket-publishing process is initiated"
+      ]
+    }
+  ]
+}

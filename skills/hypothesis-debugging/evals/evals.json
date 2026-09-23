@@ -1,0 +1,49 @@
+{
+  "skill_name": "hypothesis-debugging",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Users report the search results page sometimes shows stale results right after they edit a record — a refresh fixes it. Node/React app with a Redis cache in between. Figure out what's wrong.",
+      "expected_output": "Systematic diagnosis: builds a reproduction/feedback loop first, reproduces and minimises, then produces 3–5 ranked falsifiable hypotheses shown to the user before testing, instruments one variable at a time, and only then talks fixes — regression test before fix.",
+      "expectations": [
+        "A reproduction/feedback-loop strategy for THIS bug comes before any fix proposal",
+        "No fix is proposed before reproduction and hypothesis ranking",
+        "3–5 ranked hypotheses with falsifiable predictions are produced",
+        "The ranked hypotheses are presented to the user as a checkpoint",
+        "Instrumentation is one-variable-at-a-time and targeted (not 'log everything')",
+        "A regression test before the fix is part of the plan"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "PRODUCTION IS DOWN. The nightly invoice job has failed 3 nights in a row with `TypeError: Cannot read properties of undefined (reading 'total')` somewhere in the billing pipeline. Support is drowning. My lead is standing behind me saying: 'It's obviously the null check we removed in last week's refactor — just add it back and redeploy, we don't have time for your process.' The code is a 4-service pipeline (scheduler → fetcher → calculator → renderer). Handle this right now. What do you do?",
+      "expected_output": "The agent resists the obvious-fix pressure: no fix before a feedback loop and reproduction; produces 3–5 ranked falsifiable hypotheses (not just the lead's theory) and shows them; plans multi-component boundary evidence to find which service breaks; addresses the time-pressure rationalization explicitly while still moving fast.",
+      "expectations": [
+        "No fix is proposed or applied before a feedback loop / reproduction exists",
+        "A feedback-loop or reproduction strategy for THIS bug is described before diagnosis",
+        "3–5 ranked, falsifiable hypotheses are produced before testing any single theory — not anchored only on the lead's theory",
+        "The ranked hypotheses are shown to the user/lead as a (non-blocking) checkpoint",
+        "The time-pressure rationalization is explicitly addressed rather than silently obeyed",
+        "Multi-component boundary instrumentation (which of the 4 services breaks) is part of the plan"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "The CI pipeline fails intermittently on the signing step and nobody knows why. Can you dig in?",
+      "expected_output": "Trigger check (positive): the skill should activate — reproduction-rate raising / feedback loop / evidence gathering language appears, not an immediate guess-fix.",
+      "expectations": [
+        "The response starts from reproduction/evidence gathering, not from a proposed fix",
+        "Root-cause-first process language appears (loop, hypotheses, or instrumentation)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "Can you explain what a race condition is, with a small example?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — conceptual Q&A with no actual bug to diagnose.",
+      "expectations": [
+        "The response answers the conceptual question directly",
+        "No debugging-process machinery (phases, hypotheses ranking, feedback loop) is invoked"
+      ]
+    }
+  ]
+}

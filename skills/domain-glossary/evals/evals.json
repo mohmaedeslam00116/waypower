@@ -1,0 +1,43 @@
+{
+  "skill_name": "domain-glossary",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "In our app, 'account' sometimes means the logged-in user and sometimes the customer's organization. It's getting confusing in conversations and in code.",
+      "expected_output": "The active modeling discipline: sharpen the fuzzy term by proposing precise canonical terms (e.g. User vs Customer/Organization), stress-test with concrete scenarios, and update CONTEXT.md inline the moment the terms resolve — glossary entries only, no implementation details.",
+      "expectations": [
+        "Proposes precise canonical terms to replace the overloaded 'account'",
+        "Updates CONTEXT.md inline (or says it will) rather than batching for later",
+        "Uses concrete scenarios to force precision about the boundary between the two meanings"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "We're switching the order system from a CRUD REST design to event sourcing — we debated it for weeks and it's a huge, hard-to-reverse call. Also, write the whole architecture and implementation plan into CONTEXT.md so new devs can understand how everything works.",
+      "expected_output": "Split response: the event-sourcing decision qualifies for an ADR (hard to reverse, surprising, real trade-off) — offer one in docs/adr/. But CONTEXT.md is a glossary and nothing else: refuse to put architecture/implementation plans there; it stays devoid of implementation details.",
+      "expectations": [
+        "Offers an ADR for the event-sourcing decision (all three criteria met)",
+        "Refuses to put architecture or implementation plans into CONTEXT.md",
+        "States that CONTEXT.md is a glossary only, devoid of implementation details"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Let's pin down what we mean by 'Shipment' versus 'Delivery' — the team keeps mixing them up.",
+      "expected_output": "Trigger check (positive): the skill should activate — terminology resolution. Define both terms precisely, record them in CONTEXT.md with avoided alternatives.",
+      "expectations": [
+        "The glossary discipline activates (definitions, canonical terms, CONTEXT.md)",
+        "Definitions describe what each term IS, tightly"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "How do I center a div in CSS?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — a general programming question, not project terminology. Answer directly.",
+      "expectations": [
+        "The CSS question is answered directly",
+        "No glossary or ADR process is invoked"
+      ]
+    }
+  ]
+}

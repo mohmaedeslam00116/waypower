@@ -1,0 +1,45 @@
+{
+  "skill_name": "deep-research",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Find out whether Postgres 17's incremental backup changes our dump-and-restore upgrade plan, and give me something I can cite in the design doc.",
+      "expected_output": "A background research agent is dispatched against primary sources (Postgres 17 release notes and official docs), every claim cited to its source, and the findings written to a Markdown file in the repo's notes convention for the design doc to reference by path.",
+      "expectations": [
+        "A background agent is dispatched rather than answering inline from memory",
+        "Primary sources are named as the evidence standard (official docs / release notes)",
+        "Every claim carries a citation to its source",
+        "Findings land in a Markdown file in the repo, referenced by path"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Standup's in 10 minutes and I need to know whether Bun fully supports node's worker_threads API before I walk in. Can you dig into it and give me the answer fast?",
+      "expected_output": "The agent meets the deadline without abandoning verification: any immediate answer is explicitly marked provisional/unverified, primary-source verification is dispatched (a background agent against Bun's docs/source fits the 10-minute window), and durable capture in a repo file is planned — not a confident training-memory answer that lives only in chat.",
+      "expectations": [
+        "An immediate answer, if given, is explicitly marked provisional/unverified rather than presented as authoritative",
+        "Primary-source verification (background agent against Bun docs/source) is initiated or scheduled despite the deadline",
+        "Durable capture in a repo file is planned or done — findings do not stay chat-only by default",
+        "The deadline is met with a fast-but-verifiable plan (e.g., provisional answer now + cited file after standup)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "I need the actual current state of the Temporal TypeScript SDK's interceptors API.",
+      "expected_output": "Trigger check (positive): the skill activates — dispatch a background agent against the SDK's docs/source with per-claim citations, saved to a repo file.",
+      "expectations": [
+        "Deep research is proposed or initiated",
+        "Primary sources and per-claim citations appear"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "What does the `retryPolicy` field in this repo's workflow.ts actually do?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — a local fact lookup. Read workflow.ts (and its types) directly and answer; no background research agent.",
+      "expectations": [
+        "The local file is read and the question answered directly",
+        "No research agent, primary-source hunt, or findings file is proposed"
+      ]
+    }
+  ]
+}

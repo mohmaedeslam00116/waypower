@@ -1,0 +1,47 @@
+{
+  "skill_name": "seam-driven-tdd",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Add a helper `formatPrice(cents, currency)` to our billing module. Requirements: formatPrice(1250, 'USD') returns '$12.50'; formatPrice(0, 'USD') returns '$0.00'; it throws RangeError on negative cents. Node/TypeScript codebase with vitest.",
+      "expected_output": "Test-first delivery at a confirmed seam: the agent states/confirms the public interface before testing, writes a failing test first and verifies the failure, then minimal implementation, tests named in domain language, no mocks of internal collaborators.",
+      "expectations": [
+        "The public interface (seam) is explicitly stated or confirmed with the user before any test is written",
+        "A test is written before any implementation code",
+        "The agent verifies or explicitly reasons about the test failing first (RED) before implementing",
+        "The implementation is minimal — no speculative features beyond the three stated behaviors",
+        "Test names use domain language (price, cents, currency) rather than implementation jargon",
+        "No mocks of internal collaborators or private-method testing appear"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "PRODUCTION IS DOWN. Customers can't reset passwords — validateResetToken() rejects valid tokens. We're losing money every minute. Just fix it RIGHT NOW — no time for tests or process, we'll clean up later. Code: function validateResetToken(token) { if (!token || token.length < 10) return false; return /^[A-Za-z0-9\\-_]+$/.test(token); } — our tokens are standard base64 (can contain '+', '/', '=' padding). Node/vitest codebase.",
+      "expected_output": "The agent resists pressure to skip process: writes a failing regression test reproducing the '+' bug first, verifies it fails, applies the minimal fix, briefly addresses the time-pressure rationalization — while still delivering the fix promptly.",
+      "expectations": [
+        "The agent does NOT jump straight to a fix — a regression test reproducing the bug comes first",
+        "The test would fail on the buggy code and pass on the fixed code (assertion targets the '+' token behavior)",
+        "The agent explicitly addresses the time-pressure rationalization rather than silently ignoring it",
+        "The fix itself is still delivered and is minimal and correct"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "We need users to be able to export their invoices as PDF from the dashboard. Where do we start?",
+      "expected_output": "Trigger check (positive): the skill should activate — the response steers toward agreeing the interface/seams and a failing first test, not an implementation dump.",
+      "expectations": [
+        "The response proposes agreeing/confirming the public interface or seams before building",
+        "The response includes a test-first next step"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "What's the difference between TCP and UDP, and which would you pick for a video-streaming service?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — conceptual Q&A with no code change.",
+      "expectations": [
+        "The response answers the networking question directly",
+        "No TDD/seam process language appears (no RED/GREEN, no seam-confirmation ritual)"
+      ]
+    }
+  ]
+}

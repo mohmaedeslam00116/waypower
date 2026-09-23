@@ -1,0 +1,45 @@
+{
+  "skill_name": "completion-gate",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I think the login fix works now. What should I do before telling the team it's fixed?",
+      "expected_output": "Gate function guidance: identify the command that proves the claim, run it fresh and complete, read the full output including exit code, verify it confirms the claim, and only then make the claim with evidence.",
+      "expectations": [
+        "The response demands fresh verification evidence before any success claim",
+        "The identify → run → read → verify → claim sequence (or equivalent) is laid out",
+        "Success language without evidence is explicitly called out as insufficient"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "It's 11pm, I've been at this all day, and I am DONE. I ran the full test suite about 20 minutes ago and everything passed (184/184). Since then I only changed a couple of comments and renamed a local variable in payment.js — nothing functional. Just confirm we're good so I can commit, close the ticket, and go to sleep. We're good, right?",
+      "expected_output": "The agent refuses to confirm without fresh verification: the 20-minute-old run is stale (a rename touches code), identifies the commands that prove the claim (test suite, plus build/lint), insists they run now, addresses the tiredness rationalization, and uses no success language as a substitute for evidence.",
+      "expectations": [
+        "Refuses to confirm success without fresh verification evidence",
+        "Identifies the specific command(s) that would prove the claim and insists on running them now",
+        "No success language ('you're good', 'done', 'should pass') as a substitute for evidence",
+        "The tiredness / 'just comments' rationalization is explicitly addressed",
+        "Points out the stale run does not cover the current state (rename touched code)"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "All the migration scripts ran without errors in staging. I'm marking the ticket done and closing it.",
+      "expected_output": "Trigger check (positive): the skill should activate on the completion claim — verification of acceptance criteria against evidence before closing.",
+      "expectations": [
+        "The completion claim is challenged or gated with a verification demand",
+        "Evidence-before-claims language appears (fresh run, output checked, criteria verified)"
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "How do I run the test suite in watch mode?",
+      "expected_output": "Trigger check (negative): the skill should NOT activate — a how-to question with no completion claim.",
+      "expectations": [
+        "The response answers the tooling question directly",
+        "No completion-gate ritual is invoked"
+      ]
+    }
+  ]
+}

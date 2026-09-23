@@ -1,0 +1,23 @@
+waypower
+========
+
+This project fuses, adapts, and carries portions of two upstream projects,
+both released under the MIT License:
+
+1. mattpocock/skills
+   https://github.com/mattpocock/skills
+   Copyright (c) 2026 Matt Pocock
+   License: MIT
+
+2. obra/superpowers
+   https://github.com/obra/superpowers
+   Copyright (c) 2025 Jesse Vincent
+   License: MIT
+
+The full MIT License text is included in this repository (see LICENSE) and
+applies to those portions as required by the upstream licenses.
+
+waypower's own additions — including the fusion edits, the orchestrator
+(using-waypower), the per-skill eval suites, and the paired baseline /
+with-skill evaluation methodology — are likewise released under the MIT
+License. See README.md for details.
