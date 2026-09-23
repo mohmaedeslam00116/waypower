@@ -3,10 +3,13 @@
 > Your agent already knows how to code. **waypower teaches it how to work.**
 
 [![skills.sh](https://skills.sh/b/mohmaedeslam00116/waypower)](https://skills.sh/mohmaedeslam00116/waypower)
+[![Docs](https://img.shields.io/badge/docs-waypower--docs-0E7490)](https://mohmaedeslam00116.github.io/waypower-docs/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Skills: 13](https://img.shields.io/badge/skills-13-green.svg)](skills/)
 
 **13 pressure-tested agent skills** that give your coding agent a complete, coherent workflow — from first idea to shipped branch.
+
+📖 **[Read the full docs](https://mohmaedeslam00116.github.io/waypower-docs/)** — the pipeline, a per-skill reference, and the story of how these skills built their own site.
 
 ## Install
 
