@@ -26,6 +26,7 @@ waypower publicly launched — proper share assets on a welcoming repo — and h
 - [Release v0.2.0 — silent](t07-release-v020.md): CHANGELOG entry + plugin.json bump + retroactive v0.1.0 tag; `v0.2.0` tag and GitHub release live, master CI green; skills.sh needs no re-publish (indexes the repo). No announcement per user decision.
 - [Agent-consumable docs](t08-llms-txt.md): local postBuild plugin serves `llms.txt` / `llms-full.txt` / raw `/md/` twins (all live, text/plain+text/markdown); copy-as-markdown on every docs page. Lessons: keep a reverse guard on hand-maintained doc-order lists (build throws on drift); Docusaurus broken-link checker rejects relative links to postBuild static assets — footer links to them stay absolute.
 - [Real session transcripts](t09-real-transcripts.md): shared Transcript component carries REAL-labeled excerpts on the 6 pipeline-stage skills + hypothesis-debugging; dual-axis-review excerpt is the review of the very diff that shipped it. Homepage stat corrected 12/13 → 13/13.
+- [Skill deepening — audit + pattern + proof](t10-skill-deepening.md): 13/13 audit → 5 references, 1 dedupe, 6 KEEPs (script proposal killed — `validate-evals.mjs` already covers it). Pattern: root UPPERCASE-KEBAB references behind ≤2-line pointers, KEEP first-class, eval gate green per change. Proof: hypothesis-debugging `FEEDBACK-LOOPS.md` with per-loop recipes; Phase 1 slimmed 24→8 lines. Batches filed as t11 (pure moves) + t12 (creative/cleanup/docs sync).
 
 ## Not yet specified
 
