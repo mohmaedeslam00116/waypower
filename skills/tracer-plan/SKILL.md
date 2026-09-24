@@ -23,6 +23,8 @@ If the spec covers multiple independent subsystems, it should have been split be
 
 ## Plan Writing
 
+**Worked example:** [EXAMPLE-PLAN.md](EXAMPLE-PLAN.md) — one small plan applying all six rules below. Consult it when writing a plan, not when executing one.
+
 ### 1. Map the file structure first
 
 Decide which files will be created or modified and what each one is responsible for — decomposition decisions lock in here. Split by responsibility, not technical layer; files that change together live together; prefer files small enough to hold in context. In existing codebases follow established patterns — but if a file you're touching has grown unwieldy, including its split in the plan is reasonable.

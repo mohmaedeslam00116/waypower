@@ -48,6 +48,8 @@ New rationalizations appear under the skill. Add explicit counters, build the ra
 - With-skill agents read only their SKILL.md first; expect a long first read to truncate mid-file, so the agent must page the remainder before answering.
 - **Baselines under "just do it" pressure take real side effects** (scaffolding, file writes, dev servers). Run them in a scratch copy of the workspace, or verify and clean up afterward.
 - An agent quoting the skill's own red flags back is evidence the loop worked.
+- Structural gate: `node scripts/validate-evals.mjs` (from the pack root) validates every skill's `evals.json` shape — run it before shipping a skill change; CI runs it on `skills/**` PRs.
+
 
 ## Anti-Patterns
 
