@@ -30,22 +30,9 @@ If you haven't completed Phases 1–3, you cannot propose fixes. Phases may be c
 
 **This is the skill.** Spend disproportionate effort here. Be aggressive, be creative, refuse to give up.
 
-Ways to construct one, in roughly this order:
+Construct one from the ten proven shapes — failing test, curl/HTTP script, CLI + fixture, headless browser, trace replay, throwaway harness, property/fuzz, bisection harness, differential, HITL script (last resort) — with per-shape construction recipes and tightening techniques in [FEEDBACK-LOOPS.md](FEEDBACK-LOOPS.md).
 
-1. **Failing test** at whatever seam reaches the bug (unit, integration, e2e).
-2. **Curl / HTTP script** against a running dev server.
-3. **CLI invocation** with a fixture, diffing stdout against a known-good snapshot.
-4. **Headless browser script** asserting on DOM / console / network.
-5. **Replay a captured trace** (saved request, payload, event log) through the path in isolation.
-6. **Throwaway harness** — minimal subsystem, mocked deps, one function call.
-7. **Property / fuzz loop** — 1000 random inputs, look for the failure mode.
-8. **Bisection harness** — automate "boot at state X, check" so `git bisect run` works.
-9. **Differential loop** — same input through old vs new version, diff outputs.
-10. **HITL script** — last resort: drive a human through structured steps; captured output feeds back to you.
-
-Then **tighten** the loop: faster (cache setup, narrow the scope), sharper (assert on the specific symptom, not "didn't crash"), more deterministic (pin time, seed RNG, isolate filesystem, freeze network). A 30-second flaky loop is barely better than none; a 2-second deterministic one is a superpower.
-
-**Non-deterministic bugs:** the goal is not a clean repro but a **higher reproduction rate** — loop the trigger 100×, parallelise, add stress, inject sleeps. A 50% flake is debuggable; 1% is not.
+Then **tighten** until the loop is fast, sharp, and deterministic: a 30-second flaky loop is barely better than none; a 2-second deterministic one is a superpower. **Non-deterministic bug?** The goal is a higher reproduction rate, not a clean repro — 50% is debuggable, 1% is not.
 
 **Genuinely cannot build a loop?** Stop and say so. List what you tried. Ask the user for (a) access to the reproducing environment, (b) a redacted captured artifact (HAR, log dump, screen recording), or (c) permission to add temporary instrumentation.
 
