@@ -27,42 +27,11 @@ The map is an **index**, not a store. It lists the decisions made and points at 
 
 ### The map body
 
-The whole map at low resolution, loaded once per session. Open tickets are **not** listed: they are open child issues, found by query.
+The whole map at low resolution, loaded once per session. Open tickets are **not** listed: they are open child issues, found by query. The map-body template lives in [MAP-SCHEMA.md](MAP-SCHEMA.md) — needed only when charting.
 
-```markdown
-## Destination
-
-<what reaching the end of this map looks like: the spec, decision, or change this effort is finding its way to. One or two lines; every session orients to it before choosing a ticket.>
-
-## Notes
-
-<domain; skills every session should consult; standing preferences for this effort>
-
-## Decisions so far
-
-<!-- the index: one line per closed ticket, enough to judge relevance, then zoom the link for the detail the ticket holds -->
-
-- [<closed ticket title>](link): <one-line gist of the answer>
-
-## Not yet specified
-
-<!-- see "Fog of war": in-scope fog you can't ticket yet; graduates as the frontier advances -->
-
-## Out of scope
-
-<!-- see "Out of scope": work ruled beyond the destination; closed, never graduates -->
-```
 ### Tickets
 
-Each ticket is a **child issue** of the map; the tracker's issue id is its identity. Its body is the question, sized to one agent session (~100K tokens):
-
-```markdown
-## Question
-
-<the decision or investigation this ticket resolves>
-```
-
-Each ticket carries a `waymap:<type>` label, one of `research`, `prototype`, `grilling`, `task` (see Ticket Types).
+Each ticket is a **child issue** of the map; the tracker's issue id is its identity. Its body is the question, sized to one agent session (~100K tokens) — the template lives in [MAP-SCHEMA.md](MAP-SCHEMA.md), needed only when charting.
 
 A session **claims** a ticket by assigning it to the dev driving the map, **first**, before any work, so concurrent sessions skip it. That assignee _is_ the claim: an open, unassigned ticket is unclaimed.
 

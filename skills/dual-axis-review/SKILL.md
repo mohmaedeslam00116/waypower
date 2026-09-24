@@ -41,25 +41,12 @@ In this order:
 
 ### Identify the standards sources
 
-Anything in the repo documenting how code should be written (`CODING_STANDARDS.md`, `CONTRIBUTING.md`, hand-written lint rules). On top of that, the Standards axis always carries the **smell baseline** below (Fowler, _Refactoring_, ch.3). Two rules bind it:
+Anything in the repo documenting how code should be written (`CODING_STANDARDS.md`, `CONTRIBUTING.md`, hand-written lint rules). On top of that, the Standards axis always carries the **smell baseline** (Fowler, _Refactoring_, ch.3). Two rules bind it:
 
 - **The repo overrides.** A documented repo standard always wins; where it endorses something the baseline would flag, suppress the smell.
 - **Always a judgement call.** Each smell is a labelled heuristic ("possible Feature Envy"), never a hard violation. Skip anything tooling already enforces.
 
-The baseline (what it is → how to fix):
-
-- **Mysterious Name** — a name that doesn't reveal what it does or holds → rename it; if no honest name comes, the design's murky.
-- **Duplicated Code** — the same logic shape in more than one hunk or file → extract the shared shape, call it from both.
-- **Feature Envy** — a method reaching into another object's data more than its own → move the method onto the data it envies.
-- **Data Clumps** — the same few fields or params travelling together → bundle them into one type, pass that.
-- **Primitive Obsession** — a primitive standing in for a domain concept → give the concept its own small type.
-- **Repeated Switches** — the same switch/if-cascade on the same type recurring → polymorphism, or one map both sites share.
-- **Shotgun Surgery** — one logical change forcing scattered edits across many files → gather what changes together into one module.
-- **Divergent Change** — one file edited for several unrelated reasons → split so each module changes for one reason.
-- **Speculative Generality** — abstraction, parameters, or hooks the spec doesn't need → delete it; inline back until a real need shows.
-- **Message Chains** — long `a.b().c().d()` navigation → hide the walk behind one method on the first object.
-- **Middle Man** — a class or function that mostly delegates onward → cut it, call the real target direct.
-- **Refused Bequest** — a subclass ignoring most of what it inherits → drop the inheritance, use composition.
+The smell baseline (12 Fowler smells, what it is → how to fix) lives in [REVIEW-DISPATCH.md](REVIEW-DISPATCH.md) — paste it **in full** into the Standards sub-agent's prompt at dispatch time; a sub-agent never sees the file, only what you hand it.
 
 ### Spawn both sub-agents in parallel
 
